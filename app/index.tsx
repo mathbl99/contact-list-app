@@ -1,8 +1,10 @@
 import { Contact } from '@/components/Contact'
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
+import db from './db-test/db'
 
 export default function Index() {
+	const contactList = db
 
 	return (
 		<View style={styles.container}>
@@ -11,6 +13,12 @@ export default function Index() {
 					style={styles.scrollView}
 					contentContainerStyle={{ gap: 5 }}
 				>
+					{contactList.map((data) => (
+						<Contact
+							key={data.id}
+							data={data}
+						/>
+					))}
 				</ScrollView>
 			</View>
 		</View>
