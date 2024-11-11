@@ -6,8 +6,8 @@ import { useContact } from './ContactProvider'
 type ContactProps = {
 	id: number
 	name: string
-	phone?: string
-	email?: string
+	phone: string | null
+	email: string | null
 }
 
 export function Contact({ data }: { data: ContactProps }) {

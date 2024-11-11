@@ -3,8 +3,8 @@ import { type ReactNode, createContext, useContext, useState } from 'react'
 type ContactData = {
 	id: number
 	name: string
-	phone?: string
-	email?: string
+	phone: string | null
+	email: string | null
 }
 
 type ContactContextType = {

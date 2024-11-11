@@ -8,8 +8,11 @@ import {
 	TextInput,
 	View,
 } from 'react-native'
+import { useContactDatabase } from './database/useContactDatabase'
 
 export default function AddContact() {
+	const contactDatabase = useContactDatabase()
+
 	const nameInputRef = useRef<string | null>(null)
 	const phoneInputRef = useRef<string | null>(null)
 	const emailInputRef = useRef<string | null>(null)
@@ -21,12 +24,23 @@ export default function AddContact() {
 		input.current = text
 	}
 
-	const handleSaveButton = () => {
-		console.log({
-			name: nameInputRef.current,
-			phone: phoneInputRef.current,
-			email: emailInputRef.current,
-		})
+	const handleSaveButton = async () => {
+		if (nameInputRef.current) {
+			try {
+				const response = await contactDatabase.create({
+					name: nameInputRef.current,
+					phone: phoneInputRef.current,
+					email: emailInputRef.current,
+				})
+
+				console.log(response)
+				return router.back()
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		alert('Name should not be empty.')
 	}
 
 	const handleCancelButton = () => {
@@ -50,6 +64,7 @@ export default function AddContact() {
 					keyboardType="numeric"
 					placeholder="Phone"
 					placeholderTextColor="#ccc"
+					maxLength={11}
 					onChangeText={(text) => handleOnChangeInput(text, phoneInputRef)}
 				/>
 

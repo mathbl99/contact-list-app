@@ -1,25 +1,39 @@
 import { Contact } from '@/components/Contact'
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import db from './db-test/db'
+import { useEffect, useState } from 'react'
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
+import {
+	type ContactDatabase,
+	useContactDatabase,
+} from './database/useContactDatabase'
 
 export default function Index() {
-	const contactList = db
+	const [contacts, setContacts] = useState<ContactDatabase[]>([])
+	const contactDatabase = useContactDatabase()
+
+	const listContacts = async () => {
+		try {
+			const response = await contactDatabase.listAll()
+
+			setContacts(response)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		listContacts()
+	})
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.roundEdge}>
-				<ScrollView
-					style={styles.scrollView}
+				<FlatList
+					style={styles.listView}
+					data={contacts}
+					keyExtractor={(item) => String(item.id)}
+					renderItem={({ item }) => <Contact data={item} />}
 					contentContainerStyle={{ gap: 5 }}
-				>
-					{contactList.map((data) => (
-						<Contact
-							key={data.id}
-							data={data}
-						/>
-					))}
-				</ScrollView>
+				/>
 			</View>
 		</View>
 	)
@@ -39,7 +53,7 @@ const styles = StyleSheet.create({
 		overflow: 'hidden',
 	},
 
-	scrollView: {
+	listView: {
 		width: '100%',
 		padding: 1,
 		backgroundColor: '#000',
