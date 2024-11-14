@@ -1,25 +1,31 @@
 import { useContact } from '@/components/ContactProvider'
+import BottomNavigator from '@/components/navigation/BottomNavigator'
+import { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default function ContactDetail() {
 	const { contactData } = useContact()
+
+	console.log(contactData)
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.contactNameWrapper}>
 				<Text style={styles.title}>{contactData?.name}</Text>
 			</View>
+
 			<View style={styles.detailsWrapper}>
 				<View style={styles.textWrapper}>
 					<Text style={styles.label}>Phone</Text>
-					<Text style={styles.text}>{contactData?.phone}</Text>
+					<Text style={styles.text}>{contactData?.phone || '-'}</Text>
 				</View>
 				<View style={styles.separator} />
 				<View style={styles.textWrapper}>
 					<Text style={styles.label}>Email</Text>
-					<Text style={styles.text}>{contactData?.email}</Text>
+					<Text style={styles.text}>{contactData?.email || '-'}</Text>
 				</View>
 			</View>
+			<BottomNavigator />
 		</View>
 	)
 }

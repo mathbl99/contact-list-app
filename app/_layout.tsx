@@ -28,6 +28,10 @@ export default function RootLayout() {
 						name="addContact"
 					/>
 					<Stack.Screen
+						options={{ headerShown: false }}
+						name="editContact"
+					/>
+					<Stack.Screen
 						options={{ headerShown: true, title: '' }}
 						name="contactDetail"
 					/>

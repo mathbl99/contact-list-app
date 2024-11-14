@@ -1,6 +1,6 @@
 import { Contact } from '@/components/Contact'
 import { useEffect, useState } from 'react'
-import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import {
 	type ContactDatabase,
 	useContactDatabase,
@@ -27,13 +27,19 @@ export default function Index() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.roundEdge}>
-				<FlatList
-					style={styles.listView}
-					data={contacts}
-					keyExtractor={(item) => String(item.id)}
-					renderItem={({ item }) => <Contact data={item} />}
-					contentContainerStyle={{ gap: 5 }}
-				/>
+				{(contacts.length && (
+					<FlatList
+						style={styles.listView}
+						data={contacts}
+						keyExtractor={(item) => String(item.id)}
+						renderItem={({ item }) => <Contact data={item} />}
+						contentContainerStyle={{ gap: 5 }}
+					/>
+				)) || (
+					<View style={styles.textWrapper}>
+						<Text style={styles.text}>No contacts</Text>
+					</View>
+				)}
 			</View>
 		</View>
 	)
@@ -57,5 +63,18 @@ const styles = StyleSheet.create({
 		width: '100%',
 		padding: 1,
 		backgroundColor: '#000',
+	},
+
+	textWrapper: {
+		height: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
+	text: {
+		color: '#fff',
+		fontSize: 26,
+		opacity: 0.8,
+		marginBottom: 150,
 	},
 })

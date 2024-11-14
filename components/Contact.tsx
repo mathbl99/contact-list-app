@@ -3,7 +3,7 @@ import React from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native'
 import { useContact } from './ContactProvider'
 
-type ContactProps = {
+export type ContactProps = {
 	id: number
 	name: string
 	phone: string | null
