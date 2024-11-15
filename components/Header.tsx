@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons'
 import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import RedirectButton from './RedirectButton'
 
@@ -9,7 +10,11 @@ export default function Header() {
 				href="/addContact"
 				style={styles.addButton}
 			>
-				<Text style={styles.addButtonText}>Add</Text>
+				<Ionicons
+					name="add"
+					size={32}
+					color={'white'}
+				/>
 			</RedirectButton>
 		</View>
 	)
@@ -31,11 +36,10 @@ const styles = StyleSheet.create({
 	},
 
 	addButton: {
-		width: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 20,
-		backgroundColor: '#ffffff',
+		backgroundColor: '#000',
 	},
 
 	addButtonText: {
