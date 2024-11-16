@@ -17,6 +17,7 @@ export default function RootLayout() {
 							backgroundColor: '#000',
 						},
 						headerTintColor: '#fff',
+						presentation: 'transparentModal',
 					}}
 				>
 					<Stack.Screen
