@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
 		borderRadius: 6,
 		alignItems: 'center',
 		justifyContent: 'center',
+		gap: 2,
 	},
 
 	text: {
