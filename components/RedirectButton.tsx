@@ -11,7 +11,7 @@ type RedirectProps = {
 	children:
 		| React.ReactElement<TextProps | ImageProps>
 		| React.ReactElement<TextProps | ImageProps>[]
-	href: Href<string | object>
+	href: Href
 	style: StyleProp<ViewStyle>
 }
 

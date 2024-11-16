@@ -13,7 +13,7 @@ export type ContactProps = {
 export function Contact({ data }: { data: ContactProps }) {
 	const { setContactData } = useContact()
 
-	const handlePress = (route: Href<string | object>) => {
+	const handlePress = (route: Href) => {
 		setContactData(data)
 		router.push(route)
 	}
