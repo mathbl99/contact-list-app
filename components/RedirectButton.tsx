@@ -8,7 +8,9 @@ import {
 } from 'react-native'
 
 type RedirectProps = {
-	children: React.ReactElement<TextProps | ImageProps>
+	children:
+		| React.ReactElement<TextProps | ImageProps>
+		| React.ReactElement<TextProps | ImageProps>[]
 	href: Href<string | object>
 	style: StyleProp<ViewStyle>
 }

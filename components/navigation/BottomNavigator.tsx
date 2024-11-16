@@ -1,4 +1,6 @@
 import { useContactDatabase } from '@/app/database/useContactDatabase'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { router } from 'expo-router'
 import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native'
 import { useContact } from '../ContactProvider'
@@ -20,8 +22,13 @@ export default function BottomNavigator() {
 		<View style={styles.container}>
 			<RedirectButton
 				style={styles.button}
-				href={'/editContact'} //change this
+				href={'/editContact'}
 			>
+				<MaterialIcons
+					name="mode-edit-outline"
+					size={24}
+					color="white"
+				/>
 				<Text style={styles.text}>Edit</Text>
 			</RedirectButton>
 
@@ -29,6 +36,11 @@ export default function BottomNavigator() {
 				style={styles.button}
 				onPress={() => handleDeleteButton(contactData?.id)}
 			>
+				<Ionicons
+					name="trash-outline"
+					size={24}
+					color={'white'}
+				/>
 				<Text style={styles.text}>Delete</Text>
 			</Pressable>
 		</View>
@@ -40,7 +52,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'row',
 		width: '100%',
-		height: 50,
+		height: 70,
 		backgroundColor: '#000',
 		position: 'absolute',
 		bottom: 0,
