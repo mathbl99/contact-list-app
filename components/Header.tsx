@@ -12,7 +12,7 @@ export default function Header() {
 			>
 				<Ionicons
 					name="add"
-					size={32}
+					size={28}
 					color={'white'}
 				/>
 			</RedirectButton>
@@ -22,7 +22,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
 	container: {
-		paddingTop: (StatusBar.currentHeight || 0) + 25,
+		paddingTop: StatusBar.currentHeight || 0,
 		paddingBottom: 25,
 		padding: 10,
 		flexDirection: 'row',
@@ -31,8 +31,10 @@ const styles = StyleSheet.create({
 	},
 
 	title: {
-		fontSize: 20,
+		fontSize: 24,
 		color: '#fff',
+		includeFontPadding: false,
+		textAlignVertical: 'center',
 	},
 
 	addButton: {

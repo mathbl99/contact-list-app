@@ -26,7 +26,7 @@ export default function BottomNavigator() {
 			>
 				<MaterialIcons
 					name="mode-edit-outline"
-					size={24}
+					size={22}
 					color="white"
 				/>
 				<Text style={styles.text}>Edit</Text>
@@ -38,7 +38,7 @@ export default function BottomNavigator() {
 			>
 				<Ionicons
 					name="trash-outline"
-					size={24}
+					size={22}
 					color={'white'}
 				/>
 				<Text style={styles.text}>Delete</Text>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
 	button: {
 		width: Dimensions.get('window').width / 2,
 		backgroundColor: '#000',
-		paddingVertical: 16,
+		paddingVertical: 8,
 		borderRadius: 6,
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -72,5 +72,6 @@ const styles = StyleSheet.create({
 
 	text: {
 		color: '#fff',
+		fontSize: 12,
 	},
 })

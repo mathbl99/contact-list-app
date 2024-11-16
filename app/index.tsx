@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 
 	text: {
 		color: '#fff',
-		fontSize: 26,
+		fontSize: 20,
 		opacity: 0.8,
 		marginBottom: 150,
 	},

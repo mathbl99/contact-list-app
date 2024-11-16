@@ -1,6 +1,5 @@
 import { useContact } from '@/components/ContactProvider'
 import BottomNavigator from '@/components/navigation/BottomNavigator'
-import { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default function ContactDetail() {
@@ -53,7 +52,6 @@ const styles = StyleSheet.create({
 		gap: 10,
 		width: '100%',
 		borderRadius: 28,
-		//alignItems: "center",
 		justifyContent: 'center',
 		backgroundColor: '#1b1b1b',
 	},

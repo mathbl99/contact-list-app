@@ -146,6 +146,8 @@ const styles = StyleSheet.create({
 		textDecorationLine: 'none',
 		backgroundColor: '#1b1b1b',
 		color: '#fff',
+		includeFontPadding: false,
+		textAlignVertical: 'center',
 	},
 
 	buttonWrapper: {
