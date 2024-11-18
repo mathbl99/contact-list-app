@@ -80,7 +80,7 @@ export function useContactDatabase() {
 
 	async function listAll() {
 		try {
-			const query = 'SELECT * FROM contacts'
+			const query = 'SELECT * FROM contacts ORDER BY id DESC'
 
 			const response = await database.getAllAsync<ContactDatabase>(query)
 
