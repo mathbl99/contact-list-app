@@ -1,4 +1,5 @@
 import { useContactDatabase } from '@/app/database/useContactDatabase'
+import { phoneNumberMask } from '@/utils/utils'
 import { router } from 'expo-router'
 import { useState } from 'react'
 import {
@@ -18,6 +19,7 @@ type ContactFormProps = {
 }
 
 type InputProps = string | null
+
 export default function ContactForm({ data = null }: ContactFormProps) {
 	const contactDatabase = useContactDatabase()
 	const { setContactData } = useContact()
@@ -26,21 +28,22 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 	const [phone, setPhone] = useState<InputProps | undefined>(data?.phone)
 	const [email, setEmail] = useState<InputProps | undefined>(data?.email)
 
-	const handleOnChangeInput = (text: string | null, indentifier: string) => {
+	const handleOnChangeInput = (text: InputProps, indentifier: string) => {
 		switch (indentifier) {
 			case 'name':
 				setName(text)
 				break
-			case 'phone':
-				setPhone(text)
+			case 'phone': {
+				const maskedPhone = phoneNumberMask(text)
+				setPhone(maskedPhone)
 				break
+			}
 			case 'email':
 				setEmail(text)
 		}
 	}
 
 	const handleSaveButton = async () => {
-		console.log('Name: ', name)
 		if (name) {
 			try {
 				if (!data) {
@@ -91,12 +94,13 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 
 				<TextInput
 					style={styles.input}
-					keyboardType="numeric"
+					keyboardType="phone-pad"
 					placeholder="Phone"
 					placeholderTextColor="#ccc"
-					maxLength={11}
+					maxLength={15}
 					onChangeText={(text) => handleOnChangeInput(text, 'phone')}
 					defaultValue={data?.phone || ''}
+					value={phone ?? ''}
 				/>
 
 				<TextInput
