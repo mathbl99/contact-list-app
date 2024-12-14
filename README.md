@@ -1,6 +1,6 @@
 # Contact List App
 
-**Sobre o projeto**
+**Sobre o projeto:**
 Este projeto é uma aplicação mobile desenvolvida para o gerenciamento de contatos.
 
 ## Tecnologias Utilizadas
