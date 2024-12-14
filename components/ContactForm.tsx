@@ -28,7 +28,7 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 	const [phone, setPhone] = useState<InputProps | undefined>(data?.phone)
 	const [email, setEmail] = useState<InputProps | undefined>(data?.email)
 
-	const handleOnChangeInput = (text: InputProps, indentifier: string) => {
+	const handleOnChangeInput = (indentifier: string) => (text: InputProps) => {
 		switch (indentifier) {
 			case 'name':
 				setName(text)
@@ -98,16 +98,18 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 					placeholder="Telefone"
 					placeholderTextColor="#ccc"
 					maxLength={15}
-					onChangeText={(text) => handleOnChangeInput(text, 'phone')}
+					onChangeText={handleOnChangeInput('phone')}
 					defaultValue={data?.phone || ''}
 					value={phone ?? ''}
 				/>
 
 				<TextInput
 					style={styles.input}
+					autoCapitalize="none"
+					keyboardType="email-address"
 					placeholder="Email"
 					placeholderTextColor="#ccc"
-					onChangeText={(text) => handleOnChangeInput(text, 'email')}
+					onChangeText={handleOnChangeInput('email')}
 					defaultValue={data?.email || ''}
 				/>
 			</View>
