@@ -2,7 +2,9 @@ import { useContactDatabase } from '@/app/database/useContactDatabase'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { router } from 'expo-router'
+import { useState } from 'react'
 import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native'
+import ConfirmationModal from '../ConfirmationModal'
 import { useContact } from '../ContactProvider'
 import RedirectButton from '../RedirectButton'
 
@@ -10,12 +12,18 @@ export default function BottomNavigator() {
 	const { remove } = useContactDatabase()
 	const { contactData } = useContact()
 
-	const handleDeleteButton = (id: number | undefined) => {
+	const [showModal, setShowModal] = useState<boolean>(false)
+
+	const handleDeleteContact = (id: number | undefined) => () => {
 		if (id) {
 			remove(id)
 		}
 
 		router.back()
+	}
+
+	const handleCancel = () => {
+		setShowModal(false)
 	}
 
 	return (
@@ -34,7 +42,7 @@ export default function BottomNavigator() {
 
 			<Pressable
 				style={styles.button}
-				onPress={() => handleDeleteButton(contactData?.id)}
+				onPress={() => setShowModal(true)}
 			>
 				<Ionicons
 					name="trash-outline"
@@ -43,6 +51,16 @@ export default function BottomNavigator() {
 				/>
 				<Text style={styles.text}>Excluir</Text>
 			</Pressable>
+
+			<ConfirmationModal
+				animationType="fade"
+				transparent={true}
+				visible={showModal}
+				onRequestClose={handleCancel}
+				text="O contato será excluído permanentemente. Tem Certeza que deseja continuar?"
+				onConfirm={handleDeleteContact(contactData?.id)}
+				onCancel={handleCancel}
+			/>
 		</View>
 	)
 }
