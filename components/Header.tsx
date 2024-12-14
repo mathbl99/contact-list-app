@@ -5,7 +5,7 @@ import RedirectButton from './RedirectButton'
 export default function Header() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Contacts</Text>
+			<Text style={styles.title}>Contatos</Text>
 			<RedirectButton
 				href="/addContact"
 				style={styles.addButton}

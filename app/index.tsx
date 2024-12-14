@@ -37,7 +37,7 @@ export default function Index() {
 					/>
 				)) || (
 					<View style={styles.textWrapper}>
-						<Text style={styles.text}>No contacts</Text>
+						<Text style={styles.text}>Sem contatos</Text>
 					</View>
 				)}
 			</View>

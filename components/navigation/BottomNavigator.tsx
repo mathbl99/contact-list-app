@@ -29,7 +29,7 @@ export default function BottomNavigator() {
 					size={22}
 					color="white"
 				/>
-				<Text style={styles.text}>Edit</Text>
+				<Text style={styles.text}>Editar</Text>
 			</RedirectButton>
 
 			<Pressable
@@ -41,7 +41,7 @@ export default function BottomNavigator() {
 					size={22}
 					color={'white'}
 				/>
-				<Text style={styles.text}>Delete</Text>
+				<Text style={styles.text}>Excluir</Text>
 			</Pressable>
 		</View>
 	)

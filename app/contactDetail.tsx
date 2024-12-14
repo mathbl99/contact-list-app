@@ -15,15 +15,18 @@ export default function ContactDetail() {
 
 			<View style={styles.detailsWrapper}>
 				<View style={styles.textWrapper}>
-					<Text style={styles.label}>Phone</Text>
+					<Text style={styles.label}>Telefone</Text>
 					<Text style={styles.text}>{contactData?.phone || '-'}</Text>
 				</View>
+
 				<View style={styles.separator} />
+
 				<View style={styles.textWrapper}>
 					<Text style={styles.label}>Email</Text>
 					<Text style={styles.text}>{contactData?.email || '-'}</Text>
 				</View>
 			</View>
+
 			<BottomNavigator />
 		</View>
 	)

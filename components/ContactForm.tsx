@@ -72,7 +72,7 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 			}
 		}
 
-		Alert.alert('Warning: ' + 'Name should not be empty.')
+		Alert.alert(`O campo 'Nome' deve ser preenchido.`)
 	}
 
 	const handleCancelButton = () => {
@@ -85,9 +85,9 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 				<TextInput
 					style={styles.input}
 					autoCapitalize="words"
-					placeholder="Name"
+					placeholder="Nome"
 					placeholderTextColor="#ccc"
-					onChangeText={(text) => handleOnChangeInput(text, 'name')}
+					onChangeText={handleOnChangeInput('name')}
 					defaultValue={data?.name || ''}
 					autoFocus
 				/>
@@ -95,7 +95,7 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 				<TextInput
 					style={styles.input}
 					keyboardType="phone-pad"
-					placeholder="Phone"
+					placeholder="Telefone"
 					placeholderTextColor="#ccc"
 					maxLength={15}
 					onChangeText={(text) => handleOnChangeInput(text, 'phone')}
@@ -117,14 +117,14 @@ export default function ContactForm({ data = null }: ContactFormProps) {
 					style={styles.button}
 					onPress={handleCancelButton}
 				>
-					<Text style={styles.buttonText}>Cancel</Text>
+					<Text style={styles.buttonText}>Cancelar</Text>
 				</Pressable>
 
 				<Pressable
 					style={styles.button}
 					onPress={handleSaveButton}
 				>
-					<Text style={styles.buttonText}>Save</Text>
+					<Text style={styles.buttonText}>Salvar</Text>
 				</Pressable>
 			</View>
 		</View>
